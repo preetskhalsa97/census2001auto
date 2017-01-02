@@ -4,3 +4,4 @@ import urllib
 urllib.urlretrieve ("http://censusindia.gov.in/Dist_File/datasheet-0110.pdf","try1.pdf") #SEE- 0110==> 01- state code, 10- district code
 
 c.xlsx('try1.pdf', 'output1.xlsx')
+
