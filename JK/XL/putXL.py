@@ -24,7 +24,11 @@ for i in range(1,max+1):
 	a=4
 	
 	while (j<9):
-		jk_sheet.cell(row=i,column=j).value=district_sheet(row=a,column=1).value
+		#jk_sheet.cell(row=i,column=j).value=1 ---WORKING FINE
+		#test=district_sheet(row=a,column=1) --- TYPE ERROR
+		#test=district_sheet['A2'] --- WORKING FINE
+		#jk_sheet.cell(row=i,column=j).value=test --- WORKS IF TEST IS DEFINED CORRECTLY
+		#jk_sheet.cell(row=i,column=j).value=district_sheet(row=a,column=1) --- TYPE ERROR 
 		a=a+1
 		j=j+1
 
