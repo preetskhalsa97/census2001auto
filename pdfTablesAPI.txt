@@ -1,4 +1,5 @@
 key= 80w1fpv0089g
+NEW KEY=emrssrlm10zx
             Installation
 
 PIP:
