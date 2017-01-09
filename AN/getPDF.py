@@ -23,8 +23,8 @@ def downloadPDF(state_code):
 			break
 		i=i+1
 
-#Karnataka
-code=29
+#Andaman &Nicobar Islands
+code=35
 downloadPDF(code)
 
 
