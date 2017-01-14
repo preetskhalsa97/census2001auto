@@ -27,10 +27,8 @@ library(readxl)
 
 #paste(string1,string2,sep="")
 
-for (i in 1:45){
-  if (i==39 || i==44) next
-  
-	#string==> 1-> 01, 10-> 10
+for (i in 39:45){
+  #string==> 1-> 01, 10-> 10
 	if (i<10){
 		string=paste("0",toString(i),sep="")
 	} else{
