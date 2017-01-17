@@ -71,3 +71,16 @@ anomaly_districts = function(){
   print(agg_dev_df[order(agg_dev_df$deviation_from_mean, decreasing = TRUE)[1:10], c("District", "State", "deviation_from_mean")])
 }
 
+library(ggplot2)
+
+age_analysis = function(){
+  age_df = aggregate(cbind(X0...4.years, X5...14.years, X15...59.years, X60.years.and.above..Incl..A.N.S..)  ~ State, data = df, FUN = sum)
+  melt_age_df = melt(age_df, id.vars = "State")
+  
+  ggplot(melt_age_df, aes(x = State, y = value, fill = variable)) + 
+    geom_bar(stat="identity") +
+    xlab("State") +
+    ylab("Population by Age") +
+    theme_bw()+
+    theme(axis.text.x=element_text(angle=90,vjust=0.5))
+}
