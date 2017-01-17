@@ -64,4 +64,10 @@ top_districts_growth = function(){
   print(df[order(df$Growth..1991...2001., decreasing = FALSE)[1:10], c("District", "Growth..1991...2001.")])
 }
 
+anomaly_districts = function(){
+  agg_dev = aggregate(Growth..1991...2001. ~ State, data = df, FUN = mean)
+  agg_dev_df = merge(agg_dev, df, by = "State")
+  agg_dev_df$deviation_from_mean = agg_dev_df$Growth..1991...2001..y - agg_dev_df$Growth..1991...2001..x
+  print(agg_dev_df[order(agg_dev_df$deviation_from_mean, decreasing = TRUE)[1:10], c("District", "State", "deviation_from_mean")])
+}
 
