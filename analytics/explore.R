@@ -58,3 +58,10 @@ religion_stats = function(){
   }
   
 }
+
+top_districts_growth = function(){
+  print(df[order(df$Growth..1991...2001., decreasing = TRUE)[1:10], c("District", "Growth..1991...2001.")])
+  print(df[order(df$Growth..1991...2001., decreasing = FALSE)[1:10], c("District", "Growth..1991...2001.")])
+}
+
+
