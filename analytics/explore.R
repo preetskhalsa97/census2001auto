@@ -1,10 +1,12 @@
 df = read.csv("../finalCSV/all.csv", stringsAsFactors = TRUE)
-df$X.2 = NULL
-df$X.1 = NULL
-df$X = NULL
-df$Growth..1991...2001. = as.numeric(as.character(df$Growth..1991...2001.))
-
 library(fmsb)
+library(ggplot2)
+library(treemap)
+
+df$Growth..1991...2001. = as.numeric(as.character(df$Growth..1991...2001.))
+df$Scheduled.Caste.population = as.numeric(as.character(df$Scheduled.Caste.population))
+df$Scheduled.Tribe.population = as.numeric(as.character(df$Scheduled.Tribe.population))
+df$X = NULL
 
 development_radar_chart = function(){
   states = aggregate(cbind(Sex.ratio..females.per.1000.males., Growth..1991...2001., Household.size..per.household., Persons..literacy.rate)  ~ State, data = df, FUN = mean) 
@@ -71,8 +73,6 @@ anomaly_districts = function(){
   print(agg_dev_df[order(agg_dev_df$deviation_from_mean, decreasing = TRUE)[1:10], c("District", "State", "deviation_from_mean")])
 }
 
-library(ggplot2)
-
 age_analysis = function(){
   age_df = aggregate(cbind(X0...4.years, X5...14.years, X15...59.years, X60.years.and.above..Incl..A.N.S..)  ~ State, data = df, FUN = sum)
   melt_age_df = melt(age_df, id.vars = "State")
@@ -83,4 +83,16 @@ age_analysis = function(){
     ylab("Population by Age") +
     theme_bw()+
     theme(axis.text.x=element_text(angle=90,vjust=0.5))
+}
+
+st_analysis = function(){
+  st_df = aggregate(Scheduled.Tribe.population ~ State, data = df, FUN = sum)
+  treemap(st_df,   
+          index = c("State"),  
+          vSize = "Scheduled.Tribe.population", 
+          type="index", 
+          palette = "Reds", 
+          title="Population of Scheduled Tribes", 
+          fontsize.title = 20
+          )
 }
